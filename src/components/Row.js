@@ -45,10 +45,10 @@ function Row({title,fetchUrl,isLarge}) {
 
     return (
         <div className="relative mt-6">
-            <h2 className="text-3xl font-semibold mb-2 text-white px-4">{title}</h2>
+            <h2 className="text-xl md:text-3xl font-semibold mb-2 text-white px-4">{title}</h2>
             <div className="movies_posters overscroll-y-hidden overflow-x-scroll p-4 ">
                 {movies.map( (movie) => (
-                    <div key={movie.id} onClick={() => handleClick(movie)} className={`relative w-44 text-white mr-4 transform transition-all cursor-pointer hover:scale-105 border-none outline-none rounded-sm ${isLarge?'h-72':'h-28'}`}>
+                    <div key={movie.id} onClick={() => handleClick(movie)} className={`relative w-40 md:w-44 text-white mr-4 transform transition-all cursor-pointer hover:scale-105 border-none outline-none rounded-sm ${isLarge?'h-68 md:h-72':'h-28'}`}>
                         <img key={movie.id} src={`${baseURL}${isLarge ? movie.poster_path : movie.backdrop_path ||  movie.poster_path}`} alt={movie.name} className="object-cover w-full h-full"/>
                         <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Netflix_2015_N_logo.svg" alt="N" className={`absolute top-2 left-2 w-4 ${isLarge ?'block': 'hidden'}`} />
                     </div>
