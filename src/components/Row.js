@@ -22,7 +22,7 @@ function Row({title,fetchUrl,isLarge}) {
 
     const opts = {
         height:'500',
-        width:'100%',
+        width:'100',
         playerVars:{
             autoplay: 1,
         }
@@ -36,7 +36,8 @@ function Row({title,fetchUrl,isLarge}) {
             .then(
                 (url) => {
                     const urlPrams = new URLSearchParams(new URL(url).search);
-                    setTrailerUrl(urlPrams.get('v')); 
+                    setTrailerUrl(urlPrams.get('v'));
+
                 }
             ).catch(err => console.log(err.message))
 

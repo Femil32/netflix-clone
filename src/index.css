@@ -56,6 +56,21 @@ code {
   outline: none;
 }
 
+.loader{
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  backdrop-filter: blur(4px) saturate(180%);
+  /* filter: blur(8px); */
+  z-index: 99999999999;
+}
+.loader > span{
+  @apply h-24 w-24 rounded-full;
+  border: 10px solid red;
+  border-bottom-color: transparent;
+  animation: loadingAnime 1s infinite;
+  background:transparent; 
+}
+
 
 /* Skeleton Css */
 
@@ -86,6 +101,14 @@ code {
   }
   100% {
     transform: skewX(-10deg) translateX(200%);
+  }
+}
+@keyframes loadingAnime {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
   }
 }
 
