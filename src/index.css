@@ -19,6 +19,9 @@ code {
   background-color: #121212;
 }
 
+.movies_posters{
+  display: -webkit-box;
+}
 .movies_posters::-webkit-scrollbar{
   display: none;
 }
@@ -41,6 +44,47 @@ code {
     #111);
 }
 .main-header{
-  height:430px;
-  @apply relative text-white bg-no-repeat p-4;
+  height:550px;
+  @apply relative text-white bg-no-repeat pl-4 md:pl-8;
+}
+.nav-fade{
+  transition: all 0.20s;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.75);
+  /* border: 0.5px solid rgba(255, 255, 255, 0.125); */
+  outline: none;
+}
+
+
+/* Skeleton Css */
+
+.skeleton-movie{
+  background: #eee;
+  overflow: hidden;
+}
+.skeleton-movie::before{
+  content: '';
+  position: absolute;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.9),
+    transparent
+  );
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  animation: loading 0.6s infinite;
+}
+
+
+@keyframes loading {
+  0% {
+    transform: skewX(-10deg) translateX(-100%);
+  }
+  100% {
+    transform: skewX(-10deg) translateX(200%);
+  }
 }

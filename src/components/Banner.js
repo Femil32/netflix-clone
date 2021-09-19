@@ -21,12 +21,9 @@ function Banner() {
      };
 
     return (
-        <header style={{
-            backgroundSize:'cover',
-            backgroundImage:`linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
-            backgroundPosition:'center center', 
-        }} className="main-header">
-            <div className="absolute bottom-16 max-w-sm md:max-w-sm z-10">
+        <header className="main-header relative">
+            <img src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path || movie?.poster_path}`} alt="{movie.name}" className="absolute top-0 left-0 right-0 bottom-0 bg-no-repeat h-full w-full"/>
+            <div className="absolute bottom-16 max-w-sm md:max-w-3xl z-10">
                 <h1 className="text-4xl md:text-5xl font-semibold tracking-wide mb-4">{movie?.title || movie?.name || movie?.original_name}</h1>
                 <div className="mb-4">
                     <button className="banner-btn">Play</button>

@@ -16,9 +16,9 @@ function Navbar() {
     }, [])
 
     return ( 
-        <div className={`fixed flex top-0 justify-between p-4 z-50 w-full  ${handleNavShow && 'bg-black transition-all'}`}>
-            <img className="w-20 object-contain" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix"/>
-            <img className="w-10 object-contain" src={Avtar} alt="avtar"/>
+        <div className={`fixed flex top-0 justify-between p-4 z-50 w-full border-none outline-none  ${handleNavShow && 'nav-fade'}`}>
+            <img className="w-20 object-contain cursor-pointer" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix"/>
+            <img className="w-10 object-contain cursor-pointer" src={Avtar} alt="avtar"/>
         </div>
     )
 }

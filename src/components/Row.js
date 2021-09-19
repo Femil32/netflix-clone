@@ -21,7 +21,7 @@ function Row({title,fetchUrl,isLarge}) {
     }, [fetchUrl])
 
     const opts = {
-        height:'390',
+        height:'500',
         width:'100%',
         playerVars:{
             autoplay: 1,
@@ -32,22 +32,26 @@ function Row({title,fetchUrl,isLarge}) {
         if(trailerUrl){
             setTrailerUrl('')
         }else{
-            movieTrailer(movie?.name || movie?.title|| '')
+            movieTrailer(movie?.original_name || movie?.name || movie?.title|| '')
             .then(
                 (url) => {
                     const urlPrams = new URLSearchParams(new URL(url).search);
                     setTrailerUrl(urlPrams.get('v')); 
                 }
             ).catch(err => console.log(err.message))
+
         }
     }
 
     return (
-        <div className="mt-6">
+        <div className="relative mt-6">
             <h2 className="text-3xl font-semibold mb-2 text-white px-4">{title}</h2>
-            <div className="movies_posters flex overflow-y-hidden overflow-x-auto p-4">
-                {movies.map( (moive) => (
-                    <img onClick={() => handleClick(moive)} key={moive.id} src={`${baseURL}${isLarge ? moive.poster_path : moive.backdrop_path}`} alt={moive.name} className="object-contain mr-4 w-36 md:w-44 transform transition-all cursor-pointer hover:scale-105"/>
+            <div className="movies_posters overscroll-y-hidden overflow-x-scroll p-4 ">
+                {movies.map( (movie) => (
+                    <div key={movie.id} onClick={() => handleClick(movie)} className={`relative w-44 text-white mr-4 transform transition-all cursor-pointer hover:scale-105 border-none outline-none rounded-sm ${isLarge?'h-72':'h-28'}`}>
+                        <img key={movie.id} src={`${baseURL}${isLarge ? movie.poster_path : movie.backdrop_path ||  movie.poster_path}`} alt={movie.name} className="object-cover w-full h-full"/>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Netflix_2015_N_logo.svg" alt="N" className={`absolute top-2 left-2 w-4 ${isLarge ?'block': 'hidden'}`} />
+                    </div>
                     )
                 )}
             </div> 
